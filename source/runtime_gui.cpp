@@ -795,7 +795,7 @@ void reshade::runtime::draw_gui()
 	if (show_overlay != _show_overlay)
 		open_overlay(show_overlay, show_overlay_source);
 
-	const bool show_splash_window = _show_splash && (is_loading() || (_reload_count <= 1 && (_last_present_time - _last_reload_time) < std::chrono::seconds(5)) || (!_show_overlay && _tutorial_index == 0 && _input != nullptr));
+	const bool show_splash_window = false;
 
 	// Do not show this message in the same frame the screenshot is taken (so that it won't show up on the GUI screenshot)
 	const bool show_screenshot_message = (_show_screenshot_message || !_last_screenshot_save_successful) && !_should_save_screenshot && (_last_present_time - _last_screenshot_time) < std::chrono::seconds(_last_screenshot_save_successful ? 3 : 5);
@@ -1036,7 +1036,7 @@ void reshade::runtime::draw_gui()
 	ImVec2 viewport_offset = ImVec2(0, 0);
 	const bool show_spinner = _reload_count > 1 && _tutorial_index != 0;
 
-	// Create ImGui widgets and windows
+/*	// Create ImGui widgets and windows
 	if (show_splash_window && !(show_spinner && show_overlay))
 	{
 		ImGui::SetNextWindowPos(_imgui_context->Style.WindowPadding);
@@ -1149,7 +1149,7 @@ void reshade::runtime::draw_gui()
 		ImGui::End();
 		ImGui::PopStyleColor(2);
 		ImGui::PopStyleVar();
-	}
+	}*/
 
 	if (show_message_window)
 	{
@@ -1304,14 +1304,14 @@ void reshade::runtime::draw_gui()
 		}
 
 		const std::pair<std::string, void(runtime::*)()> overlay_callbacks[] = {
-			{ _("Home###home"), &runtime::draw_gui_home },
+		//	{ _("Home###home"), &runtime::draw_gui_home },
 #if RESHADE_ADDON
 			{ _("Add-ons###addons"), &runtime::draw_gui_addons },
 #endif
 			{ _("Settings###settings"), &runtime::draw_gui_settings },
 			{ _("Statistics###statistics"), &runtime::draw_gui_statistics },
 			{ _("Log###log"), &runtime::draw_gui_log },
-			{ _("About###about"), &runtime::draw_gui_about }
+		//	{ _("About###about"), &runtime::draw_gui_about }
 		};
 
 		const ImGuiID root_space_id = ImGui::GetID("ViewportDockspace");

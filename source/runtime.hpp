@@ -438,7 +438,7 @@ namespace reshade
 		unsigned int _frametime_key_data[4] = {};
 		unsigned int _fps_pos = 1;
 		unsigned int _clock_format = 0;
-		unsigned int _input_processing_mode = 2;
+		unsigned int _input_processing_mode = 0;
 
 		api::pipeline _imgui_pipeline = {};
 		api::pipeline_layout _imgui_pipeline_layout = {};

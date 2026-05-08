@@ -315,7 +315,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD fdwReason, LPVOID)
 
 					const auto get_target_path = [](bool any, const wchar_t *dll) { return any ? dll : get_system_path() / dll; };
 
-					// Only register DirectX hooks when module is not called opengl32.dll
+				// Only register DirectX hooks when module is not called opengl32.dll
 					if ((!is_opengl && !streamline) || config.get("INSTALL", "HookDirectX"))
 					{
 						// Register DirectDraw module in case it was used to load ReShade (but ignore otherwise)
@@ -335,7 +335,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD fdwReason, LPVOID)
 						reshade::hooks::register_module(get_target_path(!export_module_path.empty() && is_d3d && !is_dxgi, L"dxgi.dll"));
 					}
 
-					// Only register OpenGL hooks when module is not called any D3D module name
+				// Only register OpenGL hooks when module is not called any D3D module name
 					if ((!is_d3d && !is_dxgi && !streamline) || config.get("INSTALL", "HookOpenGL"))
 					{
 						reshade::hooks::register_module(get_system_path() / L"opengl32.dll");

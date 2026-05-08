@@ -12,10 +12,10 @@
 #include <algorithm> // std::find, std::find_if, std::remove, std::remove_if
 #include <Windows.h>
 
-extern void register_addon_depth();
+/*extern void register_addon_depth();
 extern void register_addon_effect_runtime_sync();
 extern void unregister_addon_depth();
-extern void unregister_addon_effect_runtime_sync();
+extern void unregister_addon_effect_runtime_sync();*/
 
 extern HMODULE g_module_handle;
 
@@ -159,7 +159,7 @@ void reshade::load_addons()
 #endif
 
 #if 1
-	{	addon_info &info = addon_loaded_info.emplace_back();
+/*	{	addon_info &info = addon_loaded_info.emplace_back();
 		info.name = "Generic Depth";
 		info.description = "Automatic depth buffer detection that works in the majority of games.";
 		info.author = "crosire";
@@ -184,7 +184,7 @@ void reshade::load_addons()
 
 			register_addon_effect_runtime_sync();
 		}
-	}
+	}*/
 #endif
 
 	// Initialize any add-ons that were registered externally
@@ -228,7 +228,7 @@ void reshade::load_addons()
 #ifndef _WIN64
 			path.extension() != L".addon32")
 #else
-			path.extension() != L".addon64")
+			path.extension() != L".addon64" && path.extension() != L".asi")
 #endif
 			continue;
 
@@ -375,8 +375,8 @@ void reshade::unload_addons()
 #endif
 
 #if 1
-	unregister_addon_depth();
-	unregister_addon_effect_runtime_sync();
+//	unregister_addon_depth();
+	//unregister_addon_effect_runtime_sync();
 #endif
 
 	// Remove all unloaded add-ons

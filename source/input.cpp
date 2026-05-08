@@ -42,7 +42,7 @@ bool reshade::input::is_key_repeated(unsigned int keycode) const
 	assert(keycode < std::size(_keys));
 	return keycode < std::size(_keys) && (_last_keys[keycode] & 0x80) == 0x80 && (_keys[keycode] & 0x80) == 0x80;
 }
-
+																																																																				 
 bool reshade::input::is_any_key_down() const
 {
 	// Skip mouse buttons
